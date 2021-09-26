@@ -20,6 +20,8 @@ app.use(morgan('combined'))
 // }))
 // app.set('view engine', 'ming')
 
+
+//routes init
 route(app)
 
 app.engine('handlebars', exphbs());
