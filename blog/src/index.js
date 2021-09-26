@@ -7,12 +7,15 @@ const port = 3000
 
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use(express.urlencoded())
+app.use(express.json())
+
 //HTTP logger
 app.use(morgan('combined'))
 //Template engine
-app.engine('ming', exphbs({
-  extname: '.ming'
-}))
+// app.engine('ming', exphbs({
+//   extname: '.ming'
+// }))
 app.set('view engine', 'ming')
 app.set('views', path.join(__dirname, 'resources/views'))
 
@@ -22,6 +25,11 @@ app.get('/', (req, res) => {
 
 app.get('/news', (req, res) => {
   res.render('news');
+})
+
+app.get('/search', (req, res) => {
+  console.log(req.query.q);
+  res.render('search');
 })
 
 

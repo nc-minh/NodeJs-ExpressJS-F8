@@ -1,5 +1,7 @@
 # NODE & EXPRESSJS
 
+## Install
+
 ```
 npm i express
 ```
@@ -12,6 +14,21 @@ npm i morgan
 ### Template engine (handlebars)
 ```
 express handlebars
+```
+### Use sass
+```
+ npm install -g sass
+```
+
+## Run
+```
+cd blog
+```
+```
+nodemon index.js
+```
+```
+npm run watch
 ```
 
 - Server side rendering:
