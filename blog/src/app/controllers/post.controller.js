@@ -2,9 +2,9 @@ const Posts = require('../models/Post')
 const { mongooseToObject } = require('../../util/mongoose')
 class PostsControllers{
     // GET /news
-    // index(req, res){
-    //     res.render('posts');
-    // }
+    index(req, res){
+        res.render('posts');
+    }
 
     //[GET] /news/:slug
     show(req, res, next){
