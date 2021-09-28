@@ -7,6 +7,7 @@ const Schema = mongoose.Schema
     image: { type: String, maxlength: 255 },
     createAt: { type: Date, default: Date.now },
     updateAt: { type: Date, default: Date.now },
+    slug: {type: String, maxlength: 255}
   })
 
   module.exports = mongoose.model('BlogPost', posts)
