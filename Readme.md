@@ -1,6 +1,6 @@
 # NODE & EXPRESSJS
 
-## Install
+## Installation
 
 ```
 npm i express
@@ -18,6 +18,10 @@ express handlebars
 ### Use sass
 ```
  npm install -g sass
+```
+### Mongoose
+```
+npm install mongoose
 ```
 
 ## Run
