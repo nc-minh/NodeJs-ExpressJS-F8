@@ -3,12 +3,22 @@ const { mutipleMongooseToObject } = require('../../util/mongoose')
 class SiteControllers{
     //GET /news
     index(req, res, next){
+        // Posts.find({})
+        //     .then(posts => {
+        //         posts = posts.map(post => post.toObject())
+        //         res.render('home', {posts})
+        //     })
+        //     .catch(next)
+
         Posts.find({})
-            .then(posts => {
-                posts = posts.map(post => post.toObject())
-                res.render('home', {posts})
+        .then(posts => {
+            res.render('home', {
+                posts: mutipleMongooseToObject(posts)
             })
-            .catch(next)
+        })
+        .catch(next)
+
+        
         // res.render('home')
     }
 
