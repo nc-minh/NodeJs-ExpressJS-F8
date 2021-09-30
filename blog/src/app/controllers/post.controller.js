@@ -18,8 +18,14 @@ class PostsControllers{
             .catch(next)
     }
 
+    //[GET] /posts/create
     create(req, res, next){
-        res.send('aaa')
+        res.render('posts/createPost')
+    }
+
+    //[POST] /posts/store
+    store(req, res, next){
+        res.send('đã gửi')
     }
 }
 

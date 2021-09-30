@@ -1,18 +1,19 @@
-<div class="mt-4">
-    <div class="row">
-        <div class="col-sm-6 col-lg-4">
-            {{#each posts}}
-            <a href="posts/{{this.slug}}" class="card">
-                <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{this.name}}</h5>
-                    <p class="card-text">{{this.description}}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </a>
-            {{/each}}
+<div class="container">
+    <a href="/posts/create">đăng bài</a>
+    <div class="mt-4">
+        <div class="row">
+            <div class="col-sm-6 col-lg-4">
+                {{#each posts}}
+                <a href="posts/{{this.slug}}" class="card">
+                    <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.name}}</h5>
+                        <p class="card-text">{{this.description}}</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </a>
+                {{/each}}
+            </div>
         </div>
     </div>
 </div>
-
-<h1>{{this}}</h1>
