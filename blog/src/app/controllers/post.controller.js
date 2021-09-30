@@ -1,5 +1,6 @@
 const Posts = require('../models/Post')
 const { mongooseToObject } = require('../../util/mongoose')
+const Post = require('../models/Post')
 class PostsControllers{
     // GET /news
     index(req, res){
@@ -25,7 +26,12 @@ class PostsControllers{
 
     //[POST] /posts/store
     store(req, res, next){
-        res.send('đã gửi')
+        // res.json(req.body)
+        const formData = req.body
+        
+        const post = new Posts(formData)
+        post.save()
+            .then(() => res.redirect('/'))
     }
 }
 
