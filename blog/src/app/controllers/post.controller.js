@@ -3,7 +3,7 @@ const { mongooseToObject } = require('../../util/mongoose')
 class PostsControllers{
     // GET /news
     index(req, res){
-        res.render('posts');
+        res.render('posts/posts')
     }
 
     //[GET] /news/:slug
@@ -11,11 +11,15 @@ class PostsControllers{
         // res.send('post neww '+req.params.slug);
         Posts.findOne({slug: req.params.slug})
             .then(posts => {
-                res.render('post', {
+                res.render('posts/post', {
                     posts: mongooseToObject(posts)
                 })
             })
             .catch(next)
+    }
+
+    create(req, res, next){
+        res.send('aaa')
     }
 }
 
