@@ -1,11 +1,13 @@
 var path = require('path')
 const express = require('express')
 const morgan = require('morgan')
+var methodOverride = require('method-override')
 const exphbs = require('express-handlebars')
 const app = express()
 const port = 3000
 app.use(express.json())
 app.use(express.urlencoded())
+app.use(methodOverride('_method'))
 
 const route = require('./routes/index')
 const db = require('./config/db/index')

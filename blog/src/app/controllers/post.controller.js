@@ -34,10 +34,25 @@ class PostsControllers{
             .then(() => res.redirect('/'))
     }
 
-    //[PUT] /posts/edit
+    //[GET] /posts/:id/edit
     edit(req, res, next){
-        res.render('posts/edit-post')
+        Posts.findById(req.params.id)
+            .then(post => res.render('posts/edit-post', {
+                post: mongooseToObject(post)
+            }))
+            .catch(next)
+        
     }
+
+    //[PUT] /posts/:id
+    update(req, res, next){
+       Posts.updateOne({_id: req.params.id}, req.body)
+        .then(() => res.redirect('/me/stored/posts'))
+        .catch(next)
+        
+    }
+
+
 }
 
 module.exports = new PostsControllers

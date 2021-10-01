@@ -1,12 +1,12 @@
 <div class="container">
     <h1>đăng bài</h1>
-    <form action="/posts/store" method="post">
+    <form action="/posts/{{post._id}}?_method=PUT" method="post">
     <label for="name">title</label>
-    <input type="text" id="name" name="name"><br><br>
+    <input type="text" value="{{post.name}}" id="name" name="name"><br><br>
     <label for="description">content: </label>
-    <input type="text" id="description" name="description"><br><br>
+    <textarea id="description" name="description">{{post.description}}</textarea><br><br>
     <label for="image">link: </label>
-    <input type="text" id="image" name="image"><br><br>
-    <input type="submit" value="Submit">
+    <input type="text" value="{{post.image}}" id="image" name="image"><br><br>
+    <input type="submit" value="Lưu">
     </form>
 </div>
