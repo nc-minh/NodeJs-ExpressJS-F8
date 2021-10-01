@@ -21,7 +21,7 @@ class PostsControllers{
 
     //[GET] /posts/create
     create(req, res, next){
-        res.render('posts/createPost')
+        res.render('posts/create-post')
     }
 
     //[POST] /posts/store
@@ -32,6 +32,11 @@ class PostsControllers{
         const post = new Posts(formData)
         post.save()
             .then(() => res.redirect('/'))
+    }
+
+    //[PUT] /posts/edit
+    edit(req, res, next){
+        res.render('posts/edit-post')
     }
 }
 

@@ -11,9 +11,11 @@
         <tbody>
             {{#each posts}}
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{@index}}</th>
                 <td>{{this.name}}</td>
-                <td>{{this.createAt}}</td>
+                <td>{{this.createdAt}}</td>
+                <td><a href="/posts/{{this._id}}/edit" class="btn btn-outline-primary">Sửa</a></td>
+                <td><a href="/" class="btn btn-outline-danger">Xóa</a></td>
             </tr>
             {{/each}}
         </tbody>

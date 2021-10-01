@@ -5,6 +5,7 @@ const PostsControllers = require('../app/controllers/post.controller')
 
 router.get('/create', PostsControllers.create)
 router.post('/store', PostsControllers.store)
+router.get('/:id/edit', PostsControllers.edit)
 router.get('/:slug', PostsControllers.show)
 router.get('/', PostsControllers.index)
 
