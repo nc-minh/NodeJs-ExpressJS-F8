@@ -1,12 +1,18 @@
 <div class="container">
-    <h1>sửa bài</h1>
+    <h1 class="mt-4">Đăng bài</h1>
     <form action="/posts/store" method="post">
-    <label for="name">title</label>
-    <input type="text" id="name" name="name"><br><br>
-    <label for="description">content: </label>
-    <input type="text" id="description" name="description"><br><br>
-    <label for="image">link: </label>
-    <input type="text" id="image" name="image"><br><br>
-    <input type="submit" value="Submit">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Title</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="name">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Content</label>
+            <textarea class="form-control" id="description" name="description" rows="10"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Image Link</label>
+            <input type="text" class="form-control" id="image" name="image" placeholder="Image Link">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Lưu">
     </form>
 </div>
