@@ -1,0 +1,21 @@
+<div class="container">
+    <h3 class="mt-4">Các bài đăng của tôi</h3>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên Khóa học</th>
+                <th scope="col">Thời gian tạo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each posts}}
+            <tr>
+                <th scope="row">1</th>
+                <td>{{this.name}}</td>
+                <td>{{this.createAt}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
