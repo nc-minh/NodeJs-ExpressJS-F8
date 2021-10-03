@@ -23,6 +23,9 @@ express handlebars
 ```
 npm install mongoose
 ```
+```
+npm i mongoose-delete
+```
 
 ## Run
 ```
