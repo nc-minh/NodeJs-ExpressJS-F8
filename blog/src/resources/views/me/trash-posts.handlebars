@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row mt-4">
         <div class="col-10">
-            <h3>Các bài đăng của tôi</h3>
+            <h3>Các bài đăng đã bị xóa</h3>
         </div>
-        <a href="/me/trash/posts" class="col d-flex justify-content-center align-items-center post-deleted"><i class="fa fa-trash" aria-hidden="true"></i></a>
+        <a href="/me/stored/posts" class="col d-flex justify-content-center align-items-center post-deleted"><i class="fa fa-backward" aria-hidden="true"></i></a>
     </div>
     <table class="table mt-4">
         <thead>
@@ -19,14 +19,14 @@
                 <th scope="row">{{@index}}</th>
                 <td>{{this.name}}</td>
                 <td>{{this.createdAt}}</td>
-                <td><a href="/posts/{{this._id}}/edit" class="btn btn-outline-primary">Sửa</a></td>
-                <td><a href="/" class="btn btn-outline-danger" data-id="{{this._id}}" data-toggle="modal"
-                        data-target="#deleteModel">Xóa</a></td>
+                <td><a href="" class="btn btn-outline-success btn-restore" data-id="{{this._id}}">Khôi Phục</a></td>
+                <td><a href="" class="btn btn-outline-danger" data-id="{{this._id}}" data-toggle="modal"
+                        data-target="#deleteModel">Xóa Vĩnh Viễn</a></td>
             </tr>
             {{else}}
             <tr>
-                <td colspan="5" class="text-center">Bạn chưa có bài đăng nào!
-                    <a href="/posts/create">Đăng bài ngay!</a>
+                <td colspan="5" class="text-center">Chưa có bài đăng nào bị xóa!
+                    <a href="/me/stored/posts">Bài đăng!</a>
                 </td>
             </tr>
             {{/each}}
@@ -45,10 +45,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Bạn có chắc chắn muốn xóa bài đăng này không?</p>
+                <p>Bạn có chắc chắn muốn xóa bài đăng này vĩnh viễn không?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" id="btn-delete-post" class="btn btn-danger">Xóa</button>
+                <button type="button" id="btn-delete-post" class="btn btn-danger">Xóa vĩnh viễn</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
             </div>
         </div>
@@ -58,23 +58,31 @@
 
 {{!-- hidden form --}}
 <form name="delete-form" method="post"></form>
+<form name="restore-form" method="post"></form>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var postId;
         var deleteForm = document.forms['delete-form'];
+        var restoreForm = document.forms['restore-form'];
         var btnDeletePost = document.getElementById('btn-delete-post');
+        var btnRestore = $('.btn-restore');
 
         $('#deleteModel').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             postId = button.data('id');
         });
 
-        
-
         btnDeletePost.onclick = function(){
-            deleteForm.action = '/posts/' + postId + '?_method=DELETE';
+            deleteForm.action = '/posts/' + postId + '/force?_method=DELETE';
             deleteForm.submit();
         }
+
+        btnRestore.click(function(e){
+            e.preventDefault();
+            var postID = $(this).data('id');
+            restoreForm.action = '/posts/' + postID + '/restore?_method=PATCH';
+            restoreForm.submit();
+        })
     });
 </script>

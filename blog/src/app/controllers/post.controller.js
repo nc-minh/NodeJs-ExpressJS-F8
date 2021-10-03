@@ -54,10 +54,26 @@ class PostsControllers{
 
     // [DELETE] /posts:id
     delete(req, res, next){
+        Posts.delete({_id: req.params.id})
+            .then(() => res.redirect('back'))
+            .catch(next)
+    }
+
+    // [DELETE] /posts:id
+    forceDelete(req, res, next){
         Posts.deleteOne({_id: req.params.id})
             .then(() => res.redirect('back'))
             .catch(next)
     }
+
+    // [PATCH] /posts:id/restore
+    restore(req, res, next){
+        Posts.restore({_id: req.params.id})
+            .then(() => res.redirect('back'))
+            .catch(next)
+    }
+
+    
 
 
 }
