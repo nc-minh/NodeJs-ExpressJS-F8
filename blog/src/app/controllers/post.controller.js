@@ -52,6 +52,13 @@ class PostsControllers{
         
     }
 
+    // [DELETE] /posts:id
+    delete(req, res, next){
+        Posts.deleteOne({_id: req.params.id})
+            .then(() => res.redirect('back'))
+            .catch(next)
+    }
+
 
 }
 

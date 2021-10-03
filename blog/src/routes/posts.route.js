@@ -7,6 +7,7 @@ router.get('/create', PostsControllers.create)
 router.post('/store', PostsControllers.store)
 router.get('/:id/edit', PostsControllers.edit)
 router.put('/:id', PostsControllers.update)
+router.delete('/:id', PostsControllers.delete)
 router.get('/:slug', PostsControllers.show)
 router.get('/', PostsControllers.index)
 
