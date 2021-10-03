@@ -31,7 +31,7 @@ class PostsControllers{
         
         const post = new Posts(formData)
         post.save()
-            .then(() => res.redirect('/'))
+            .then(() => res.redirect('/me/stored/posts'))
     }
 
     //[GET] /posts/:id/edit

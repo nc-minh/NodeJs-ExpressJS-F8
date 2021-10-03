@@ -10,7 +10,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Tên bài đăng</th>
-                <th scope="col">Thời gian tạo</th>
+                <th scope="col">Thời gian xóa</th>
             </tr>
         </thead>
         <tbody>
@@ -18,7 +18,7 @@
             <tr>
                 <th scope="row">{{@index}}</th>
                 <td>{{this.name}}</td>
-                <td>{{this.createdAt}}</td>
+                <td>{{this.deletedAt}}</td>
                 <td><a href="" class="btn btn-outline-success btn-restore" data-id="{{this._id}}">Khôi Phục</a></td>
                 <td><a href="" class="btn btn-outline-danger" data-id="{{this._id}}" data-toggle="modal"
                         data-target="#deleteModel">Xóa Vĩnh Viễn</a></td>
