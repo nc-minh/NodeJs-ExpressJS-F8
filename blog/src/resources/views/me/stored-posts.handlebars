@@ -7,9 +7,25 @@
             <i class="fa fa-trash" aria-hidden="true"></i>({{deletedCount}})
         </a>
     </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
+        <label class="form-check-label" for="checkbox-all">
+            Chọn tất cả
+        </label>
+    </div>
+    <div class="input-group mt-2">
+        <select class="custom-select" id="inputGroupSelect04">
+            <option selected>Choose...</option>
+            <option value="delete">Xóa</option>
+        </select>
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary disabled" type="button">Thực Hiện</button>
+        </div>
+    </div>
     <table class="table mt-4">
         <thead>
             <tr>
+                <th scope="col">Chọn</th>
                 <th scope="col">#</th>
                 <th scope="col">Tên bài đăng</th>
                 <th scope="col">Thời gian tạo</th>
@@ -18,6 +34,11 @@
         <tbody>
             {{#each posts}}
             <tr>
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="postIDs[]" value="{{this._id}}">
+                    </div>
+                </td>
                 <th scope="row">{{@index}}</th>
                 <td>{{this.name}}</td>
                 <td>{{this.createdAt}}</td>
@@ -57,7 +78,6 @@
     </div>
 </div>
 
-
 {{!-- hidden form --}}
 <form name="delete-form" method="post"></form>
 
@@ -66,17 +86,18 @@
         var postId;
         var deleteForm = document.forms['delete-form'];
         var btnDeletePost = document.getElementById('btn-delete-post');
+        var checkboxAll = $('#checkbox-all');
 
         $('#deleteModel').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             postId = button.data('id');
         });
 
-        
-
         btnDeletePost.onclick = function(){
             deleteForm.action = '/posts/' + postId + '?_method=DELETE';
             deleteForm.submit();
         }
+
+        checkboxAll.change()
     });
 </script>

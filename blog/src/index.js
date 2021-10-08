@@ -17,9 +17,6 @@ db.connect()
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-
-
-
 //HTTP logger
 app.use(morgan('combined'))
 //Template engine
@@ -28,17 +25,13 @@ app.use(morgan('combined'))
 // }))
 // app.set('view engine', 'ming')
 
-
 //routes init
 route(app)
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
-
 app.set('views', path.join(__dirname, 'resources', 'views'))
-
-
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

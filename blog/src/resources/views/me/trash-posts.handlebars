@@ -3,7 +3,8 @@
         <div class="col-10">
             <h3>Các bài đăng đã bị xóa</h3>
         </div>
-        <a href="/me/stored/posts" class="col d-flex justify-content-center align-items-center post-deleted"><i class="fa fa-backward" aria-hidden="true"></i></a>
+        <a href="/me/stored/posts" class="col d-flex justify-content-center align-items-center post-deleted"><i
+                class="fa fa-backward" aria-hidden="true"></i></a>
     </div>
     <table class="table mt-4">
         <thead>
@@ -73,12 +74,12 @@
             postId = button.data('id');
         });
 
-        btnDeletePost.onclick = function(){
+        btnDeletePost.onclick = function () {
             deleteForm.action = '/posts/' + postId + '/force?_method=DELETE';
             deleteForm.submit();
         }
 
-        btnRestore.click(function(e){
+        btnRestore.click(function (e) {
             e.preventDefault();
             var postID = $(this).data('id');
             restoreForm.action = '/posts/' + postID + '/restore?_method=PATCH';
