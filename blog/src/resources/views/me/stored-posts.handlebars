@@ -1,4 +1,4 @@
-<div class="container">
+<form method="POST" action="/posts/form-actions" class="container container-form" name="container-form">
     <div class="row mt-4">
         <div class="col-10">
             <h3>Các bài đăng của tôi</h3>
@@ -14,12 +14,12 @@
         </label>
     </div>
     <div class="input-group mt-2">
-        <select class="custom-select" id="inputGroupSelect04">
-            <option selected>Choose...</option>
+        <select class="custom-select" id="inputGroupSelect04" name="action" required>
+            <option value="" selected>Choose...</option>
             <option value="delete">Xóa</option>
         </select>
         <div class="input-group-append">
-            <button class="btn btn-outline-secondary disabled" type="button">Thực Hiện</button>
+            <button class="btn btn-outline-secondary btn-submit" type="submit" disabled>Thực Hiện</button>
         </div>
     </div>
     <table class="table mt-4">
@@ -55,7 +55,7 @@
             {{/each}}
         </tbody>
     </table>
-</div>
+</form>
 
 {{!-- confirm delete --}}
 <div id="deleteModel" class="modal" tabindex="-1" role="dialog">
@@ -87,6 +87,9 @@
         var deleteForm = document.forms['delete-form'];
         var btnDeletePost = document.getElementById('btn-delete-post');
         var checkboxAll = $('#checkbox-all');
+        var postItemCheckbox = $('input[name="postIDs[]"]');
+        var btn_submit = $('.btn-submit');
+        var containerForm = $('forms[name="container-form"]');
 
         $('#deleteModel').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
@@ -98,6 +101,34 @@
             deleteForm.submit();
         }
 
-        checkboxAll.change()
+        //checkbox all clicked
+        checkboxAll.change(function(){
+            var isCheckedAll = $(this).prop('checked')
+            postItemCheckbox.prop('checked', isCheckedAll)
+            ActiveBtn();
+        });
+
+        //post item checkbox changed
+        postItemCheckbox.change(function(){
+            var isCheckedAll = postItemCheckbox.length === $('input[name="postIDs[]"]:checked').length;
+            checkboxAll.prop('checked', isCheckedAll);
+            ActiveBtn();
+        });
+
+        containerForm.on('submit', function(e){
+            var isSubmitable = !$(this).hasClass('disabled');
+            if(!isSubmitable){
+                e.preventDefault();
+            }
+        });
+
+        function ActiveBtn(){
+            var checkedCount = $('input[name="postIDs[]"]:checked').length;
+            if(checkedCount > 0){
+                btn_submit.removeAttr('disabled');
+            }else{
+                btn_submit.attr('disabled', true);
+            }
+        }
     });
 </script>

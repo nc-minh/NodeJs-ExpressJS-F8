@@ -1,6 +1,5 @@
 const Posts = require('../models/Post')
 const { mongooseToObject } = require('../../util/mongoose')
-const Post = require('../models/Post')
 class PostsControllers{
     // GET /news
     index(req, res){
@@ -73,7 +72,21 @@ class PostsControllers{
             .catch(next)
     }
 
-    
+    // [POST] /posts:form-action
+    formAction(req, res, next){
+        // res.json(req.body)
+        switch(req.body.action){
+            case 'delete':
+                Posts.delete({_id: { $in: req.body.postIDs }})
+                    .then(() => res.redirect('back'))
+                    .catch(next)
+                break;
+            default:
+                res.json({
+                    error: 'Lỗi vcl'
+                })
+        }
+    }
 
 
 }

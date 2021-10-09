@@ -5,6 +5,7 @@ const PostsControllers = require('../app/controllers/post.controller')
 
 router.get('/create', PostsControllers.create)
 router.post('/store', PostsControllers.store)
+router.post('/form-actions', PostsControllers.formAction)
 router.get('/:id/edit', PostsControllers.edit)
 router.put('/:id', PostsControllers.update)
 router.patch('/:id/restore', PostsControllers.restore)
