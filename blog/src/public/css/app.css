@@ -2,11 +2,24 @@ h1 {
   color: red;
 }
 
-.post-deleted{
+.post-deleted {
   cursor: pointer;
   font-size: 1.6rem;
-  text-decoration: none !important;
-  color: blueviolet;
+  text-decoration: none;
+}
+
+.footer {
+  width: 100%;
+  height: 3rem;
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.footer p {
+  margin: 0;
+  padding: 0;
 }
 
 /*# sourceMappingURL=app.css.map */
