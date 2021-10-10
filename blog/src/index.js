@@ -5,12 +5,21 @@ var methodOverride = require('method-override')
 const exphbs = require('express-handlebars')
 const app = express()
 const port = 3000
+const SortMiddleware = require('./app/middleware/SortMiddleware')
+
+
+
 app.use(express.json())
 app.use(express.urlencoded())
 app.use(methodOverride('_method'))
+//Custom middleware
+app.use(SortMiddleware)
 
 const route = require('./routes/index')
 const db = require('./config/db/index')
+
+
+
 
 //Connect to DB
 db.connect()
@@ -25,8 +34,12 @@ app.use(morgan('combined'))
 // }))
 // app.set('view engine', 'ming')
 
+
+
 //routes init
 route(app)
+
+
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');

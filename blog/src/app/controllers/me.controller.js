@@ -6,7 +6,17 @@ const Post = require('../models/Post')
 class MeControllers {
     //[GET]: /me/stored/posts
     storedPosts(req, res, next) {
-        Promise.all([Posts.find({}), Posts.countDocumentsDeleted()])
+        let postQuery = Posts.find({})
+
+        // res.json(res.locals._sort)
+
+        if(req.query.hasOwnProperty('_sort')){
+            postQuery = postQuery.sort({
+                [req.query.column]: req.query.type,
+            })
+        }
+
+        Promise.all([postQuery, Posts.countDocumentsDeleted()])
             .then(([posts, deletedCount]) =>
                 res.render('me/stored-posts', {
                 deletedCount: deletedCount,

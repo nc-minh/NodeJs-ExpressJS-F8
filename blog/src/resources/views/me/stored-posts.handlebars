@@ -2,6 +2,7 @@
     <div class="row mt-4">
         <div class="col-10">
             <h3>Các bài đăng của tôi</h3>
+            {{_sort.type}}
         </div>
         <a href="/me/trash/posts" class="col d-flex justify-content-center align-items-center post-deleted">
             <i class="fa fa-trash" aria-hidden="true"></i>({{deletedCount}})
@@ -27,7 +28,11 @@
             <tr>
                 <th scope="col">Chọn</th>
                 <th scope="col">#</th>
-                <th scope="col">Tên bài đăng</th>
+                <th scope="col">Tên bài đăng
+                    <a href="?_sort&column=name&type=desc">
+                        <i class="fa fa-sort" aria-hidden="true"></i>
+                    </a>
+                </th>
                 <th scope="col">Thời gian tạo</th>
             </tr>
         </thead>
