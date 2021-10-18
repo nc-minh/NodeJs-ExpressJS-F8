@@ -32,7 +32,7 @@ npm i mongoose-delete
 cd blog
 ```
 ```
-nodemon index.js
+npm start
 ```
 ```
 npm run watch
